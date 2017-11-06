@@ -2,12 +2,12 @@ $(function(){
     $.fn.extend({
         switch:function(obj){
             //接口
-            obj.target=obj.target||'img';
+            obj.tabcontent=obj.tabcontent||'img';
             obj.Color=obj.Color||'#aFFFbF';
-            obj.effect=obj.effect||'fade';
-           
-            if(obj.target){
-                var item=$(this).find(obj.target);
+            obj.effect='slide'||'fade';
+            
+            if(obj.tabcontent){
+                var item=$(this).find(obj.tabcontent);
                 for(var i=0;i<item.length;i++){
                     item.eq(i).hide();
                     item.eq(0).show()
@@ -16,6 +16,12 @@ $(function(){
             //创建切换按钮
             var ul=$('<ul></ul>');
             $(this).append(ul);
+            ul.css({
+                margin:'10px 5px'
+            })
+            $(this).css({
+                margin:'10px auto'
+            })
             for(var i=0;i<item.length;i++){
                 var li=$('<li></li>');
                 ul.append(li);
@@ -64,7 +70,7 @@ $(function(){
                     display:'block',
                     float:'left'
                 })
-                $(obj.target).closest('div').css({
+                $(obj.tabcontent).closest('div').css({
                     width:item.width()*(item.length),
                     height:item.eq(0).height()
                 })
@@ -79,7 +85,7 @@ $(function(){
                     item.eq(now).css({
                         display:'block'
                     })
-                    $(obj.target).closest('div').animate({
+                    $(obj.tabcontent).closest('div').animate({
                         marginLeft:-now*item.width()
                     })
                 })
@@ -89,7 +95,7 @@ $(function(){
 
 
     $('.context').switch({
-        target:'img',
+        tabcontent:'img',
         Color:'blue',
         effect:'slide'
     })
