@@ -1,4 +1,5 @@
 # change
+## tab切换
 
 ### 参数
 $('.banner).switch({  
